@@ -109,7 +109,7 @@ def get_loaders(opt):
     val_dataset = CDDloader_for_txt(val_full_load, opt, aug=False)
 
     logging.info('STARTING Dataloading')
-
+    train_sampler = None
     if opt.distributed:
         train_sampler = distributed.DistributedSampler(train_dataset)
         train_loader = DataLoader(train_dataset, pin_memory=True, shuffle=(train_sampler is None), batch_size=opt.batch_size, sampler=train_sampler, num_workers=opt.num_workers)
