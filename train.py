@@ -76,6 +76,8 @@ if __name__ == '__main__':
         device_ids = opt.gpu_ids
         ngpus_per_node=len(device_ids)
         opt.batch_size = int(opt.batch_size/ngpus_per_node)
+    
+    print(dev)
 
     if opt.sync_bn is None:
         if opt.cuda and len(opt.gpu_ids) > 1:
