@@ -2,7 +2,7 @@ import datetime
 import torch
 import torch.nn as nn
 from sklearn.metrics import precision_recall_fscore_support as prfs
-from utils.parser import get_parser_with_args
+from utils.parser import get_parser_with_args, parse_config
 from utils.helpers import (get_loaders, get_criterion, load_gan_generator, load_gan_discrimitor,
                            load_model, initialize_metrics, get_mean_metrics,
                            set_metrics, LambdaLR, ReplayBuffer, load_gan_discrimitor_result)
@@ -31,7 +31,7 @@ if __name__ == '__main__':
     parser.add_argument('--config', help='Config file')
     args = parser.parse_args()
 
-    opt = get_parser_with_args(args.config)
+    opt = parse_config(args.config)
 
     """
     Initialize experiments log
