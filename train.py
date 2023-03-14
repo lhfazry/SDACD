@@ -29,6 +29,8 @@ if __name__ == '__main__':
     print("start")
     parser = argparse.ArgumentParser(description='Train')
     parser.add_argument('--config', help='Config file')
+    parser.add_argument('--local_rank', default=-1, type=int,
+                            help='node rank for distributed training')
     args = parser.parse_args()
     print(args.config)
 
