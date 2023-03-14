@@ -298,6 +298,7 @@ def load_gan_discrimitor(opt, dev):
 def load_gan_discrimitor_result(opt, dev):
     input_shape = (opt.num_class, opt.load_size, opt.load_size)
     model = Discriminator_result(input_shape)
+    print(model)
     if opt.cuda:
         model = model.cuda()
     else:
