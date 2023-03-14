@@ -274,7 +274,7 @@ if __name__ == '__main__':
             [cd_preds_1, cd_preds_2, cd_preds_3, cd_preds] = model(real_A_norm2, real_B_norm2, fake_B_norm2, fake_A_norm2)
             logging.info(f'cd_preds_1: {cd_preds_1[0].shape}')
             logging.info(f'labels: {labels.shape}')
-            logging.info(f'labels: {labels}')
+            logging.info(f'labels: {torch.min(labels)}, {torch.max(labels)}')
             #logging.info(f'cd_preds_3: {cd_preds_3}')
             #logging.info(f'cd_preds: {cd_preds}')
 
