@@ -33,6 +33,7 @@ if __name__ == '__main__':
     print(args.config)
 
     opt = parse_config(args.config)
+    print(opt)
 
     """
     Initialize experiments log
