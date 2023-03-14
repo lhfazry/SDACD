@@ -70,7 +70,7 @@ if __name__ == '__main__':
 
     if opt.distributed:
         torch.cuda.set_device(args.local_rank)
-        #dev = f'cuda:{args.local_rank}'
+        dev = torch.device(f'cuda:{args.local_rank}')
         torch.distributed.init_process_group(
             backend="nccl", init_method="env://")
         device_ids = opt.gpu_ids
