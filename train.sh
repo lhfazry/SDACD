@@ -10,4 +10,4 @@
 
 source activate liu
 #CUDA_VISIBLE_DEVICES=$1 python -m torch.distributed.launch --master_port 59510 --nproc_per_node=2 train.py $2
-CUDA_VISIBLE_DEVICES=$1 python train.py $2
+CUDA_VISIBLE_DEVICES=$1 python train.py --config $2
