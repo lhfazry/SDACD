@@ -3,7 +3,7 @@
   "load_size": 256,
   "augmentation": true,
   "num_gpus": 2,
-  "gpu_ids": "0,1",
+  "gpu_ids": "1",
   "num_workers": 8,
   "num_channel": 3,
   "num_class": 2,
