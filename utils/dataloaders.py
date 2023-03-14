@@ -207,7 +207,7 @@ class CDDloader_for_txt(data.Dataset):
 
     def __getitem__(self, index):
 
-        imgA_path, imgB_path, label_path = self.full_load[index]['imageA'], self.full_load[index]['imageB'], self.full_load[index]['label'] / 255
+        imgA_path, imgB_path, label_path = self.full_load[index]['imageA'], self.full_load[index]['imageB'], self.full_load[index]['label']
 
         return self.loader(imgA_path,
                            imgB_path,
