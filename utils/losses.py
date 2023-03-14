@@ -13,9 +13,8 @@ def hybrid_loss(predictions, target):
 
     for prediction in predictions:
         bce = focal(prediction, target)
-        #dice = dice_loss(prediction, target)
-        #loss += bce + dice
-        loss += bce
+        dice = dice_loss(prediction, target)
+        loss += bce + dice
 
     return loss
 

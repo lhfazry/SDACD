@@ -15,7 +15,7 @@
   "weight_decay":5e-4,
   "nesterov": false,
   "lr_scheduler": "poly",
-  "loss_function": "hybrid",
+  "loss_function": "bce",
   "dataset_dir": null,
   "train_txt_path": "./filelist/cdd_train.txt",
   "val_txt_path": "./filelist/cdd_val.txt",
