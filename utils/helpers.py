@@ -122,7 +122,7 @@ def get_loaders(opt):
                                              batch_size=opt.batch_size,
                                              shuffle=False,
                                              num_workers=opt.num_workers)
-    return train_loader,train_sampler, val_loader
+    return train_loader, train_sampler, val_loader
 
 def get_test_loaders(opt, batch_size=None):
 

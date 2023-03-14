@@ -46,7 +46,7 @@ if __name__ == '__main__':
     """
     Set up environment: define paths, download data, and set device
     """
-    os.environ["CUDA_VISIBLE_DEVICES"] = "0,1"
+    os.environ["CUDA_VISIBLE_DEVICES"] = opt.gpu_ids
     if torch.cuda.is_available():
         dev = torch.device('cuda')
         opt.cuda = True
@@ -94,7 +94,7 @@ if __name__ == '__main__':
 
     seed_torch(seed=777)
 
-    train_loader,train_sampler, val_loader = get_loaders(opt)
+    train_loader, train_sampler, val_loader = get_loaders(opt)
 
     """
     Load Model then define other aspects of the model

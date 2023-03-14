@@ -9,5 +9,5 @@
 #SBATCH -t 5-1:30:00
 
 #source activate liu
-#CUDA_VISIBLE_DEVICES=$1 python -m torch.distributed.launch --master_port 59510 --nproc_per_node=2 train.py $2
-python train.py --config $1
+python -m torch.distributed.launch --master_port 59510 --nproc_per_node=2 train.py $1
+#python train.py --config $1
