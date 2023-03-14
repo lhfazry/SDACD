@@ -15,7 +15,6 @@ def get_parser_with_args(metadata_json='metadata.json'):
     return None
 
 def parse_config(config_file='metadata.json'):
-
     with open(config_file, 'r') as fin:
         option = AttrDict(json.load(fin))
         
