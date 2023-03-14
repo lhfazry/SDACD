@@ -30,7 +30,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Train')
     parser.add_argument('--config', help='Config file')
     args = parser.parse_args()
-
+    print(args.config)
+    
     opt = parse_config(args.config)
 
     """
