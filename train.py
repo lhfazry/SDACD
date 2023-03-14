@@ -110,6 +110,9 @@ if __name__ == '__main__':
     D_C = load_gan_discrimitor_result(opt, dev)
     opt.start_epoch = 0
 
+    print(D_A)
+    print(D_C)
+
     criterion = get_criterion(opt)
     criterion_GAN = nn.MSELoss()
     criterion_cycle = nn.L1Loss()
