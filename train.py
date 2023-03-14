@@ -272,7 +272,8 @@ if __name__ == '__main__':
             fake_B_norm2 = transform1(fake_B_norm2)
 
             [cd_preds_1, cd_preds_2, cd_preds_3, cd_preds] = model(real_A_norm2, real_B_norm2, fake_B_norm2, fake_A_norm2)
-            #logging.info(f'cd_preds_1: {cd_preds_1}')
+            logging.info(f'cd_preds_1: {cd_preds_1[0].shape}')
+            logging.info(f'labels: {labels.shape}')
             #logging.info(f'cd_preds_2: {cd_preds_2}')
             #logging.info(f'cd_preds_3: {cd_preds_3}')
             #logging.info(f'cd_preds: {cd_preds}')
@@ -283,7 +284,6 @@ if __name__ == '__main__':
             loss_CD_GAN_3 = criterion_GAN(D_C(cd_preds_3[-1]), valid)
             cd_loss += ((loss_CD_GAN_1 + loss_CD_GAN_2 + loss_CD_GAN_3) / 3) * 0.1
 
-            logging.info(f'cd_preds: {cd_preds}')
             loss_print.append(cd_loss.data.cpu().numpy())
 
             cd_loss.backward()
