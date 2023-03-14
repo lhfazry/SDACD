@@ -16,6 +16,7 @@ import random
 import numpy as np
 import time
 import itertools
+import argparse
 from torch.autograd import Variable
 import torchvision.transforms as transforms
 
@@ -26,8 +27,11 @@ if __name__ == '__main__':
     Initialize Parser and define arguments
     """
     print("start")
-    parser, metadata = get_parser_with_args()
-    opt = parser.parse_args()
+    parser = argparse.ArgumentParser(description='Train')
+    parser.add_argument('--config', help='Config file')
+    args = parser.parse_args()
+
+    opt = get_parser_with_args(args.config)
 
     """
     Initialize experiments log

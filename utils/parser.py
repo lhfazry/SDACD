@@ -1,5 +1,6 @@
 import argparse as ag
 import json
+from utils.attr_dict import AttrDict
 
 def get_parser_with_args(metadata_json='metadata.json'):
     parser = ag.ArgumentParser(description='Training change detection network')
@@ -12,3 +13,10 @@ def get_parser_with_args(metadata_json='metadata.json'):
         return parser, metadata
 
     return None
+
+def parse_config(config_file='metadata.json'):
+
+    with open(config_file, 'r') as fin:
+        option = AttrDict(json.load(fin))
+        
+        return option
