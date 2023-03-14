@@ -272,6 +272,10 @@ if __name__ == '__main__':
             fake_B_norm2 = transform1(fake_B_norm2)
 
             [cd_preds_1, cd_preds_2, cd_preds_3, cd_preds] = model(real_A_norm2, real_B_norm2, fake_B_norm2, fake_A_norm2)
+            logging.info(f'cd_preds_1: {cd_preds_1}')
+            logging.info(f'cd_preds_2: {cd_preds_2}')
+            logging.info(f'cd_preds_3: {cd_preds_3}')
+            logging.info(f'cd_preds: {cd_preds}')
 
             cd_loss = criterion(cd_preds_1, labels) + criterion(cd_preds_2, labels) + criterion(cd_preds_3, labels) + criterion(cd_preds, labels)
             loss_CD_GAN_1 = criterion_GAN(D_C(cd_preds_1[-1]), valid)
