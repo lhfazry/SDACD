@@ -209,7 +209,7 @@ if __name__ == '__main__':
     total_step = -1
 
     for epoch in range(opt.start_epoch, opt.epochs):
-        train_sampler.set_epoch(epoch)
+        #train_sampler.set_epoch(epoch)
         train_metrics = initialize_metrics()
         val_metrics = initialize_metrics()
         evaluator_1 = Evaluator(opt.num_class)
