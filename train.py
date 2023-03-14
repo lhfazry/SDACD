@@ -110,9 +110,6 @@ if __name__ == '__main__':
     D_C = load_gan_discrimitor_result(opt, dev)
     opt.start_epoch = 0
 
-    print(D_A)
-    print(D_C)
-
     criterion = get_criterion(opt)
     criterion_GAN = nn.MSELoss()
     criterion_cycle = nn.L1Loss()
@@ -256,7 +253,7 @@ if __name__ == '__main__':
             real_A = Variable(batch_img1.type(Tensor))
             real_B = Variable(batch_img2.type(Tensor))
 
-            valid = Variable(torch.full([real_A.size(0), *D_C.module.output_shape],1/3),requires_grad=False).to(dev)
+            valid = Variable(torch.full([real_A.size(0), *D_C.output_shape],1/3),requires_grad=False).to(dev)
 
             fake_B = G_AB(real_A).detach()
             fake_A = G_BA(real_B).detach()
@@ -283,8 +280,8 @@ if __name__ == '__main__':
             cd_loss.backward()
             optimizer.step()
 
-            valid = Variable(Tensor(np.ones((real_A.size(0), *D_A.module.output_shape))), requires_grad=False)
-            fake = Variable(Tensor(np.zeros((real_A.size(0), *D_A.module.output_shape))), requires_grad=False)
+            valid = Variable(Tensor(np.ones((real_A.size(0), *D_A.output_shape))), requires_grad=False)
+            fake = Variable(Tensor(np.zeros((real_A.size(0), *D_A.output_shape))), requires_grad=False)
 
             G_AB.train()
             G_BA.train()
@@ -370,9 +367,9 @@ if __name__ == '__main__':
             loss_D = (loss_D_A + loss_D_B) / 2
             loss_D_print.append(loss_D.data.cpu().numpy())
 
-            valid_1 = torch.cat([torch.ones([real_A.size(0), *D_A.module.output_shape]),torch.zeros([real_A.size(0), *D_A.module.output_shape]),torch.zeros([real_A.size(0), *D_A.module.output_shape])],dim=1).to(dev)
-            valid_2 = torch.cat([torch.zeros([real_A.size(0), *D_A.module.output_shape]),torch.ones([real_A.size(0), *D_A.module.output_shape]),torch.zeros([real_A.size(0), *D_A.module.output_shape])],dim=1).to(dev)
-            valid_3 = torch.cat([torch.zeros([real_A.size(0), *D_A.module.output_shape]),torch.zeros([real_A.size(0), *D_A.module.output_shape]),torch.ones([real_A.size(0), *D_A.module.output_shape])],dim=1).to(dev)
+            valid_1 = torch.cat([torch.ones([real_A.size(0), *D_A.output_shape]),torch.zeros([real_A.size(0), *D_A.output_shape]),torch.zeros([real_A.size(0), *D_A.output_shape])],dim=1).to(dev)
+            valid_2 = torch.cat([torch.zeros([real_A.size(0), *D_A.output_shape]),torch.ones([real_A.size(0), *D_A.output_shape]),torch.zeros([real_A.size(0), *D_A.output_shape])],dim=1).to(dev)
+            valid_3 = torch.cat([torch.zeros([real_A.size(0), *D_A.output_shape]),torch.zeros([real_A.size(0), *D_A.output_shape]),torch.ones([real_A.size(0), *D_A.output_shape])],dim=1).to(dev)
 
             optimizer_D_C.zero_grad()
             real_C_1 = fake_C_buffer_1.push_and_pop(cd_preds_1[-1])
