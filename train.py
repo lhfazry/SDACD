@@ -69,15 +69,15 @@ if __name__ == '__main__':
     opt.distributed = num_gpus>1
 
     if opt.distributed:
-        torch.cuda.set_device(opt.local_rank)
-        dev = f'{args.local_rank}'
+        torch.cuda.set_device(args.local_rank)
+        #dev = f'{args.local_rank}'
         torch.distributed.init_process_group(
             backend="nccl", init_method="env://")
         device_ids = opt.gpu_ids
         ngpus_per_node=len(device_ids)
         opt.batch_size = int(opt.batch_size/ngpus_per_node)
     
-    print(dev)
+    #print(dev)
 
     if opt.sync_bn is None:
         if opt.cuda and len(opt.gpu_ids) > 1:
