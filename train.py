@@ -283,6 +283,7 @@ if __name__ == '__main__':
             loss_CD_GAN_3 = criterion_GAN(D_C(cd_preds_3[-1]), valid)
             cd_loss += ((loss_CD_GAN_1 + loss_CD_GAN_2 + loss_CD_GAN_3) / 3) * 0.1
 
+            logging.info(f'cd_preds: {cd_preds}')
             loss_print.append(cd_loss.data.cpu().numpy())
 
             cd_loss.backward()
