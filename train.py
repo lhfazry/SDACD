@@ -460,7 +460,7 @@ if __name__ == '__main__':
                 [cd_preds_1, cd_preds_2, cd_preds_3,  cd_preds] = model(real_A_norm2, real_B_norm2,
                                                                                         fake_B_norm2, fake_A_norm2)
 
-                cd_loss = criterion(cd_preds_1, labels) +criterion(cd_preds_2, labels) + criterion(cd_preds_3, labels) + criterion(cd_preds, labels)
+                cd_loss = criterion(cd_preds_1[0], labels) +criterion(cd_preds_2[0], labels) + criterion(cd_preds_3[0], labels) + criterion(cd_preds[0], labels)
                 val_loss_list.append(cd_loss.data.cpu().numpy())
 
                 cd_preds_1 = cd_preds_1[-1]

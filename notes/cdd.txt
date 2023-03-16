@@ -1,0 +1,1 @@
+./train.sh configs/cdd.json >> log/train_cdd.log 2>&1 &
