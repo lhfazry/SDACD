@@ -529,6 +529,7 @@ if __name__ == '__main__':
 
                 # Insert training and epoch information to metadata dictionary
                 logging.info('updata the model')
+                metadata = dict()
                 metadata['validation_metrics'] = mean_val_metrics
 
                 # Save model and log
